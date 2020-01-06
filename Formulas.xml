@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<formulas>
+  <formula id="TOTAL HEIGHT" paramcode="39" value="{TRAVEL}+{OVERHEAD}+{PIT DEPTH}">
+    <data>{TRAVEL}+({OVERHEAD}+{PIT DEPTH})</data>
+  </formula>
+  <NAFields>
+    <NAGrids id="NAGrids">
+      <NAGrid id="grTemplate06">
+        <NA id="COMPENSATION TYPE 1" paramcode="245" IsValueTable="1">
+          <NAChild id="COMPENSATION QTY (TYPE 1)" paramcode="246" IsValueTable="1" SelectedVal="NA">3</NAChild>
+        </NA>
+        <NA id="COMPENSATION TYPE 2" paramcode="582" IsValueTable="1">
+          <NAChild id="COMPENSATION QTY (TYPE 2)" paramcode="581" IsValueTable="1" SelectedVal="NA">1</NAChild>
+        </NA>
+      </NAGrid>
+    </NAGrids>
+  </NAFields>
+</formulas>
+

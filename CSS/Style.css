@@ -1,0 +1,212 @@
+.Datagridheadertextdefault
+{
+	font-weight: bold;
+	font-size: 9pt;
+	color: black;
+	font-family: Arial;
+	text-decoration: none;
+}
+.Datagridheadertextdefault2
+{
+	font-style: normal;	
+	color: black;
+	font-family: Arial;
+	text-decoration: none;	
+}
+.DatagridHeaderSubText
+{
+	FONT-FAMILY: Arial;
+	FONT-SIZE: 8pt; 
+	COLOR: black; 
+	FONT-WEIGHT: bold;		
+}
+.Datagridbodytext
+{
+FONT-FAMILY: Arial;
+FONT-SIZE: 8pt;
+COLOR: black;
+text-decoration: NONE;
+}
+.Datagridheadertext1
+{
+FONT-FAMILY: Arial;
+FONT-SIZE: 9pt;
+COLOR: Blue ;
+FONT-WEIGHT: normal ;
+text-decoration: NONE;
+}
+
+.DatagridItemHighlightText
+{
+	FONT-FAMILY: Arial;
+	FONT-SIZE: 8pt; 
+	COLOR: black; 
+}
+
+.PageHeaderTitle
+{  
+	FONT-FAMILY: Arial; 
+	FONT-SIZE: 9pt; 
+	FONT-WEIGHT: bold;
+	COLOR: black; 
+	BORDER: 1pt;
+	BORDER-COLOR: #6699CC;
+	BACKGROUND-COLOR: #ACD5FF;
+}
+.PageHeader 
+{  
+	FONT-FAMILY: Arial;
+	font-style:normal;
+	visibility: visible;
+	display:table-header-group;
+}
+
+.labelerror
+{
+	font-size: 11px;
+	color: red;
+	font-style: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;				
+}
+
+.Pagelabel
+{
+	font-size: 14px;
+	color: black;
+	font-style: normal;
+	font-family:  Verdana,Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.label
+{
+	font-size: 10px;	
+	color:Black;	
+	font-style: normal;
+	font-family:  Verdana,Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.usernamelabel
+{
+	font-size: 11px;
+	color:Green ;
+	font-style: normal;
+	font-family:  Verdana,Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.label3
+{
+	font-size: 9px;
+	color: lightgrey;
+	font-style: normal;
+	font-family:  Verdana,Arial, Helvetica, sans-serif;
+	text-decoration: none;	
+}
+.label4
+{
+	font-size: 11px;
+	color: black;
+	font-style: normal;
+	font-family:  Verdana,Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+.labelreadonly
+{
+	font-size: 11px;
+	color: yellow;
+	font-style: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;	
+}
+
+.button
+{
+	font-size: 10pt;
+	border-left-color: #507CD1;
+	border-bottom-color: #507CD1;	
+	border-top-color: #507CD1;
+	border-right-color: #507CD1;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-bottom-width:1px;
+	border-left-width:1px;
+	border-top-width:1px;
+	border-right-width:1px;
+	behavior: url(Button.htc);	
+	color:#000000; 
+	font-family: Verdana,Arial;
+	background-color: #BDBDBD;
+}
+	
+.Hand
+{
+	cursor: hand;
+}
+
+.ddlCSS
+{
+	font-size: 12px;
+	border-left-color: #ffffff;
+	border-bottom-color: #ffffff;
+	border-top-color: #ffffff;
+	border-right-color: #ffffff;
+	color: black;	
+	font-style: normal;
+	font-family: Verdana,Arial, Helvetica, sans-serif;
+	text-decoration: none;	
+}
+
+.textbox
+{
+	font-size: 12px;
+	color: black;
+	font-style: normal;
+	font-family: Arial,Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.title
+{
+	font-size: 12px;
+	color: Gold;
+	font-style: normal;
+	font-family:  Verdana,Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.link
+{
+	font-size: 10px;
+	color: #000066;
+	font-style: normal;
+	font-family:  Verdana,Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight: bold;	
+}
+.HeaderFreez  
+{  
+	position:relative ;   
+	top:expression(this.offsetParent.scrollTop);  
+	z-index: 10;  
+}  
+.GridCaption
+{
+	font-size: 14px;
+	color: #b80000;
+	font-style: normal;
+	font-family:  Verdana,Arial, Helvetica, sans-serif;
+	text-decoration:underline;
+	font-weight: bold;
+	padding-bottom:5px;
+} 

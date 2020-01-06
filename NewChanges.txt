@@ -1,0 +1,608 @@
+﻿
+1. Added Below Stored Procedures under OrdSpec
+
+	1.SP_GetWBSMasterContractNo
+	2.SP_ExportWBSDetails
+	3.SP_GetWBSMasterContractNo
+	4.SP_GetWBSMasterReleaseDetails
+	
+2. Modified the below Stored Procedures under OrdSpec
+
+	1.SP_Activate
+	2.SP_GetViewOutput :-added when 'ACT' then 'Activated' under case 'Status'.	
+	3.SP_RptSummaryDetails,SP_RptKSetList :-
+		commented below code line
+		--and (Qty is null or CONVERT(decimal(9,2),Qty) > 0.0) 
+	4.SP_UpdateExceptionInProjectBOM :- Added code to update totalcost and totalcost local
+	5.SP_ComponentException  :- Added code to select TotalCost$,CurrencyID
+		
+3. Added Below Stored Procedures under OrdDAT
+	1.SP_UpdateTempOutputCost
+
+4. For the backend 'MtlBOmComputeEngine'
+	added below code to update the cost in tempoutput
+		Try
+            If (SqlHelper.ExecuteNonQuery(ConStr, "SP_UpdateTempOutputCost", RefNo) = 0) Then
+                _Exception = "Error in Updating Cost "
+            End If
+        Catch ex As Exception
+            _Exception = "Error in Updating Cost " + ex.Message
+        End Try
+        
+5. ProjectBOM, WBSBOM, TempOutput has been changed in ORDSPEC & ORDDAT.
+6. TempOutputTistory Table has been changed in ORDSPEC.
+7.Modified "SP_GetWBSMasterReleaseDetails" Stored Procedures under OrdSpec
+	search condition has been modified
+	
+8. Removed below meta tag from "MainNEWScreen.aspx"
+<meta http-equiv="X-UA-Compatible" content="IE=9" /> 
+and added <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+
+9. Saved below Views under OrdDat
+	1.V_OrdSpec_TempOutput
+	2.V_OrdSpec_TempOutputHistory
+	
+10. Added  <meta http-equiv="X-UA-Compatible" content="IE=edge" />  to all asp pages
+11. Modified "SP_UpdateExceptionInProjectBOM" Stored Procedures under OrdSpec for Cost calculation using Quantity
+12. Added the condition to check whether quantity is numberic or not for cost calculation ISNUMERIC(@Qty)=1 in
+	"SP_UpdateTempOutputCost" Stored Procedures under OrdDAT for Cost calculation using Quantity
+	
+13. Added below new fields under [ordcfgQAS].[dbo].[VendorMaster] , and updated data using VendorMaster details from access db
+	
+	1.VendorCode	varchar(10)	Checked
+	2.CurrencyID	varchar(5)	Checked
+	3.VendorDescription	varchar(50)	Checked
+	
+14. Created the new table [ordcfgQAS].[dbo].[KitMaster]
+	1.KitNo	varchar(30)	Unchecked
+	2.KitDescription	varchar(50)	Checked		
+	3.UpdateDate	date	Checked
+	4.UpdateBy	varchar(25)	Checked
+
+15. Created the new table [ordcfgQAS].[dbo].[ComponentMaster]
+	1.MaterialNo	varchar(30)	Unchecked
+	2.MaterialDescription	varchar(50)	Checked
+	3.UpdateDate	date	Checked
+	4.UpdateBy	varchar(25)	Checked	
+
+16. Created the new table [ordcfgQAS].[dbo].[VendorComponentMaster]
+	1.ComponentNo	varchar(30)	Unchecked
+	2.ComponentDescription	varchar(50)	Checked
+	3.VendorNo	varchar(10)	Checked
+	4.VU_Price	decimal(13, 2)	Checked
+	5.VPer	decimal(13, 2)	Checked
+	6.VUOM	varchar(3)	Checked
+	7.CurrencyID	varchar(5)	Checked
+	8.UpdateDate	date	Checked
+	9.UpdateBy	varchar(25)	Checked
+		
+17. Modified the stored procedure [SP_InterfaceToCostTable] under ordcfgQAS to update
+	newly created ComponentMaster table,VendorComponetMaster and added code to update fields currencyid and part description
+	for MaterialCost_Current and MaterialCost_Future tables.
+	
+18.	Modified the stored procedure [SP_InsertPartNumber] under ordcfgQAS,OrdDAT to update
+	newly created KitMaster table.	
+	
+19. Added new table MaterialCategory under 	ordcfgQAS,OrdDAT
+	1.MaterialCategoryID	varchar(5)	Unchecked
+	2.MaterialCateogyName	varchar(30)	Checked
+	
+20. new field MaterialCategoryID varchar(5)	Unchecked added under ordcfgQAS->FunctionDefinition,OrdDAT->FunctionDefinition
+	AND ADDED Primary Key FunctionID
+	
+21. Modified the stored procedure [SP_GetFunctionDefinition] under ordcfgQAS to 
+	get the  MaterialCategoryID
+
+22. Added a new Stored Procedure [SP_GetMaterialCategory] under ordcfgQAS to 
+	get the MaterialCategory table details.
+		
+23. Modified the stored procedure [SP_UpdateFunctionDefinition] under ordcfgQAS to
+	set the MaterialCategoryID
+	
+24. Added a new Stored Procedure [SP_ImportAccessComponentToSQLDB] under ordcfgQAS,OrdDAT to 
+	Import the ComponentMaster,VendorComponent tables from
+	Access DB to ComponentMaster,VendorComponentMaster	tables respt.
+
+25. Added a new Stored Procedure [SP_ImportToMaterialCost] under ordcfgQAS to 
+	Import the VendorComponentMaster data into MaterialCost and MaterialCostFuture tables.
+	
+26. Added new table view  V_MaterialCategory under 	OrdSpec 
+		OrdDAT.MaterialCategory->OrdSpec.V_MaterialCategory
+		
+27. Added a new Stored Procedure [SP_GetMaterialCategory] under OrdSpec to 
+	get the MaterialCategory table details.	
+	
+28. Added a new Stored Procedure [SP_GetMaterialCostVUPrice] under ordcfgQAS to 
+	get the MaterialCost details along with the matching vendorcomponentmaster vuprice.	
+	
+29. Modified the stored procedure [SP_UpdateTempOutput] under ordcfgQAS,OrdDAT to 
+	update UpdateBy,UpdateDate	
+	
+30. Modified the stored procedure [SP_GetMaterialCost] under ordcfgQAS to 
+	get valid total cost by adding ISNULL to DirectMtl$,DMFJ$ etc. ie. ISNULL(DirectMtl$,0)
+	
+31. Below new fields added under ordcfgQAS->TempOutput,OrdDAT->TempOutput,OrdSpec->TempOutput,OrdSpec->ProjectBOM,TempOutputHistory
+	1.UpdateDate	date	Checked
+	2.UpdateBy	varchar(25)	Checked	
+	
+32. Modified the stored procedure [SP_ComponentException] under OrdSpec to 
+	get the exception list using material category and vendor list.
+	
+33. Modified the stored procedure [SP_CreateWBS] under OrdSpec to 
+	insert the newly added fields DirectMtl$,DMFJ$,Labor$,Subcon$,SubconBatam$
+	,TotalCost$,TotalCostLocal$,CurrencyID,DMCN1$ from ProjectBOM to WBSBOM	
+	
+//17Sep2014
+
+34.	Added 3 new tables under OrdSpec to insert the data on proceed after all exception has been cleared.
+	
+	1. OrderHeader
+	-------------
+		1.WBSRefNo	bigint	Unchecked
+		2.ProjectName	varchar(50)	Unchecked
+		3.VendorName	varchar(50)	Unchecked
+		4.VersionNo	varchar(3)	Checked
+		5.CurrencyID	varchar(5)	Checked
+		6.UpdateDate	date	Checked
+		7.UpdateBy	varchar(25)	Checked	
+		
+	2. OrderComponent
+	-------------
+		1.WBSRefNo	bigint	Unchecked
+		2.ParentPartNo	varchar(50)	Unchecked
+		3.DisplaySeq	varchar(5)	Unchecked
+		4.ComponentNo	varchar(50)	Checked
+		5.ComponentName	varchar(50)	Checked
+		6.Quantity	decimal(18, 2)	Checked
+		7.UOM	varchar(5)	Checked
+		8.DrawingNo	varchar(50)	Checked
+		9.RevNo	varchar(5)	Checked
+		10.UnitPrice	decimal(18, 2)	Checked
+		11.UpdateDate	date	Checked
+		12.UpdateBy	varchar(25)	Checked
+		
+	3. OrderKit
+	-------------	
+		1.WBSRefNo	bigint	Unchecked
+		2.ParentPartNo	varchar(50)	Unchecked
+		3.ParentPartDesc	varchar(50)	Checked
+		4.GroupName	varchar(50)	Checked
+		5.MaterialCategoryID	varchar(5)	Checked
+		6.GLcode	varchar(10)	Checked
+		7.DrawingNumber	varchar(50)	Checked
+		8.RevisionNo	varchar(50)	Checked
+		9.OrderQty	decimal(18, 2)	Checked
+		10.UOM	varchar(15)	Checked
+		11.UnitPrice	decimal(18, 2)	Checked
+		12.UpdateDate	date	Checked
+		13.UpdateBy	varchar(25)	Checked
+		
+35. Added a new Stored Procedure [SP_GetProjectNumber] under OrdSpec to 
+	Get Project Number for the respective RefNo from tempspec.	
+	
+36. Added a new Stored Procedure [SP_GetProjectNames] under OrdSpec to 
+	Get the respective project names for the given project number.
+	
+37. Modified the Stored Procedure [SP_CreateWBS] under OrdSpec 
+		Removed parameter @LiftNo .
+		Now @DocNo = @ProjectNo +'-'+@VendorName+'-'+@VersionNo and @WBSNo = @ProjectNo  
+//18/Sep/2014
+-------
+38. Modified the View V_VendorMaster under OrdSpec to select the missing fields,
+	 CurrencyID, VendorCode
+	 
+Not Exist Renamed to SP_CreateOrderHeaderAndComponent 31. Added a new Stored Procedure [SP_CreateOrderHeader] under OrdSpec to 
+	Create OrderHeader details for the respective ProjectName and DocumentNo.
+	
+39. Modified the Stored Procedure [SP_ExportWBSDetails] under OrdSpec
+	 added WBSMaster.ProjRefNo	to get part number from V_PartMaster 
+	 i.e.	V_PartMaster.RefNo=WBSMaster.ProjRefNo	
+	 
+//19/Sep/2014--
+40. Added primary key constranit to table PartMaster under 	ordcfgQAS,OrdDAT
+	CONSTRAINT [PK_PartMaster] PRIMARY KEY CLUSTERED 
+	(
+		[RefNo] ASC,
+		[PartNo] ASC
+	) 
+41. Modified the view [V_OrdSpec_TempOutput] under OrdDat to reflect the newly added columns
+	UpdateDate, UpdateBy under OrdDat->TempOutput
+
+42. Modified the view [V_OrdSpec_TempOutputHistory] under OrdDat to reflect the newly added columns
+	UpdateDate, UpdateBy under OrdDat->TempOutput
+	
+43. Modified the Stored Procedure [SP_ComponentException] under OrdSpec to 
+	get the exception list if part number or drawing number is null
+	i.e. Tmpo.PartNo in ('@','#', NULL,'') or Tmpo.PartNo IS NULL
+		Tmpo.dwgNo in ('@','#', NULL,'') or Tmpo.dwgNo IS NULL	
+		
+//22/Sep/2014
+------------									
+
+44. Added a new Stored Procedure [SP_CreateOrderHeaderAndComponent] under OrdSpec to 
+	Create OrderHeader and OrderComponent details for the respective ProjectName and DocumentNo.
+
+45. Added a new Stored Procedure [SP_CreateOrderKit] under OrdSpec to 
+	Create OrderKitdetails for the respective DocumentNo.	
+	
+//25/Sep/2014
+
+46.Added a new Stored Procedure [sp_DataTransferWithPK]	under OrdDAT to transfer tables from one
+	DB to another along with data and Primary Key Constraints.
+	
+47. Modified the Stored Procedure [SP_UpdateTempOutputCost] under OrdDAT to take the Qty from tempoutput
+for computation rather than Qty from MaterialCost_Current
+
+48. Added the below Stored Procedures From ordcfgQAS to OrdDAT
+	1.SP_InterfaceToCostTable
+	2.SP_InsertToVendorComponentMaster
+	3.SP_GetMaterialCategory	
+	4.SP_ImportToMaterialCost
+	5.SP_GetMaterialCostVUPrice
+	6.SP_GetMaterialCost
+	
+49. Modified the stored procedure [SP_GetFunctionDefinition] under OrdDAT to 
+	get the  MaterialCategoryID	
+
+50. Modified the stored procedure [SP_UpdateFunctionDefinition] under OrdDAT to
+	set the MaterialCategoryID	
+	
+51. Added a new Stored Procedure [SP_TransferStoredProc]	under OrdDAT to transfer all
+	the stored procedures from one DB to another .
+	
+//26/Sep/2014---
+--------------
+52. Added Primary Keys to the below tables under ordcfgQAS,OrdDAT
+	1.DecisionTable_AssignParms -> TableID,ParmCode
+	2.DecisionTableDetail -> TableID,DisplaySeq
+	3.FormulaDataSource ->  FormulaID,DisplaySeq
+	4.FormulaDefinition ->   FormulaID
+	5.Function_AssignModels ->  FunctionID,ModelType
+	6.FunctionNode -> NodeID
+	7.ModelType -> ModelType	
+	8.Parameters -> ParmCode 	
+	9.Parameters_AssignModels -> ParmCode,ModelType
+	10.ParmGroup -> GroupNo
+	11.ParmValues -> ParmCode,ValueCode
+	12.ParmValues_ExcludeModel -> ParmCode,ValueCode,ModelType
+	13.ProcessSteps -> NodeID,FunctionID
+	14.TempException ->  RefNo,NodeID,FunctionID
+	15.TempMaster ->   RefNo
+	16.TempOutput ->   RefNo,NodeID,FunctionID
+	17.TempSpec ->   RefNo,ParmCode
+	18.UOMTable ->     UOM
+
+53. Added Primary Keys to the below tables under OrdSpec
+	
+	1.ProjectBOM ->		 RefNo,NodeID,FunctionID
+	2.ProjectSpec ->     RefNo,ParmCode,
+	3.TempException ->   RefNo,NodeID,FunctionID
+	4.TempOutput ->      RefNo,NodeID,FunctionID
+	5.TempOutputHistory -> RefNo,NodeID,FunctionID,VersionNo
+	6.WBSBOM -> WBSRefNo,NodeID,FunctionID	
+	
+//29/Sep/2014
+---------------	
+54. Modified the Stored Procedure [SP_RptKSetWBSList],[SP_RptWBSSetDetails] under OrdSpec to get the
+	part number from PartMaster using PrjRefNo from WBSMaster instead of WBSRefNo from WBSBOM
+	
+//---- Above Changes aligned to LIVE-------------
+
+------TODO Changes from 01/Oct/2014	------------
+1.Added NOSVersion Key in webconfig to maintain version information and displayed in all pages.-Done
+2.Added Below New Tables under OrdcfgQAS,OrdDAT
+	1.KitDetail
+		KitNo	varchar(30)	Unchecked
+		ChildPart	varchar(100)	Unchecked
+		ChildPer	decimal(13, 4)	Checked
+		UpdateDate	date	Checked
+		UpdateBy	varchar(25)	Checked
+		
+		PK: KitNo,ChildPart
+3.Added below Views under OrdcfgQAS
+		1.V_Dat_KitDetail
+		2.V_Dat_KitMaster
+		
+4. Modified the Stored Procedure [SP_ImportAccessComponentToSQLDB] under ordcfgQAS to
+   import AccessKitDetail,AccessKitMaster tables from
+   Access DB to V_Dat_KitDetail,V_Dat_KitMaster		
+   
+5.Modified the Stored Procedure [SP_InsertPartNumber] under OrdDAT to
+	insert respective Kit Details for the current kit number in to 
+	KitDetail table
+6.Added 5 New Rows in MenuTable Under CommonDatQas for the new menu Supply Chain in Back End 	
+	MenuID	SeqNo	GroupID	MenuDescription	RoleID	ModuleID
+	113	1	4	Vendor Master	ITV-003	NEWORD
+	114	2	4	Component Master	ITV-003	NEWORD
+	115	3	4	Vendor Component Master	ITV-003	NEWORD
+	116	4	4	Kit Master	ITV-003	NEWORD
+	117	5	4	Kit Detail	ITV-003	NEWORD
+	
+--- 07/Oct/2014
+7.Added new Stored Procedure [SP_GetVendorMasterDetails] under ordcfgQAS to Get Vendor Master Details
+8.Added new table VendorTypeMaster under ordcfgQAS to Get Vendor Type Details	
+	Columns:
+		VendorTypeID	int	Unchecked
+		VendorType	varchar(5)	Unchecked
+		VendorTypeDescription	varchar(200)	Checked   
+	PK:
+		VendorTypeID
+		
+--- 08/Oct/2014			
+9.Added new Stored Procedure [SP_GetVendorTypeMasterDetails] under ordcfgQAS to Get VendorTypeMaster Details
+10.Added new Stored Procedure [SP_UpdateVendorMaster] under ordcfgQAS to Insert or update VendorMaster details
+			
+--- 09/Oct/2014	
+11.Added new Stored Procedure [SP_GetComponentMasterDetails] under ordcfgQAS to Get ComponentMaster Details	
+12.Added new Stored Procedure [SP_AddComponentMaster] under ordcfgQAS to To Insert New Component into ComponentMaster	
+13.Added new Stored Procedure [SP_GetKitMasterDetails] under ordcfgQAS to Get V_Dat_KitMaster Details	
+14.Added new Stored Procedure [SP_AddKitMaster] under ordcfgQAS to To Insert New Kit into V_Dat_KitMaster
+15.Added new Stored Procedure [SP_GetVendorComponentMasterDetails] under ordcfgQAS to 
+	to Get VendorComponentMaster Details for the selected K-Set Name and Vendor Code
+--- 10/Oct/2014	
+16.Added new Stored Procedure [SP_UpdateVendorComponentMaster] under ordcfgQAS to 
+	to Update VendorComponentMaster VUPrice and VPer
+		
+17.Added new Stored Procedure [SP_GetKitDetailDetails] under ordcfgQAS  
+	To Get SP_GetKitDetail Details for the selected Kit Number
+	
+18.Added new Stored Procedure [SP_GetAllMaterialNoDetails] under ordcfgQAS  
+	To Get All the MaterialNo, MaterialDescription from ComponentMaster	
+	
+19.Added new Stored Procedure [SP_UpdateKitDetail] under ordcfgQAS  
+	To Insert or update KitDetail details	
+	
+20.Added new Stored Procedure [SP_DeleteKitDetail] under ordcfgQAS  
+	To Delete specified kit no and childpart from KitDetail	
+	
+-- 13/Oct/2014
+
+21. Modified the Stored Procedure [SP_GetMaterialCostVUPrice] under ordcfgQAS
+	to get the VU_Price for a single Quantity. i.e. VU_Price=VU_Price/VPer		
+	
+21. Modified the Stored Procedure [SP_GetMaterialCost],[SP_GetMaterialCostVUPrice] under OrdDAT
+	CONVERT(DECIMAL(9,4) has been changed to CONVERT(DECIMAL(18,4)		
+	
+-- 14/Oct/2014	
+
+22. Modified the Table VendorMaster under OrdDAT,ordcfgQAS
+	Modified F/SP vendor Type to 'I'
+	
+23.Added new Stored Procedure [SP_RptCostReport] under OrdSpec  
+	Get Cost Report List for RptKCostReport	
+	
+24. added new row to the Table VendorTypeMaster under ordcfgQAS
+	VendorTypeID	VendorType	VendorTypeDescription
+	3					I		In House
+	
+25. Added new Stored Procedure [SP_GetVendorType] under  ordcfgQAS
+	To Get the vendor type from VendorMaster.
+	
+26. Added new View V_ExchangeRate_Current under OrdSpec to 
+	get the ExchangeRate_Current table details from OrdDAT	
+-- 16/Oct/2014
+
+27.	Modified the Stored Procedure [SP_RptWBSSetDetails] under ordspec to get the
+	WBSM.ProjRefNo and WBSM.ReleaseDate for the report purpose.
+	
+28.Added new Stored Procedure [SP_RptZeroCostReport] under OrdSpec  
+	To Get Detailed records having TotalCose Zero for Report RptZeroCostReport		
+	
+--- 20/Oct/2014
+
+29. Modified the SP "SP_UpdateExceptionInProjectBOM" under ordspec .
+		V_ExchangeRate_Current has been used instead of dbo.orddat.ExchangeRate_Current		
+		
+30.Added new Stored Procedure [SP_GetZeroCostException] under OrdSpec  
+	To get all the records having total cost zero in Tempoutput
+	
+31.Added new Stored Procedure [SP_UpdateZeroCostException] under OrdSpec  
+	To Maintain Zero Cost Exception in Tempoutput	
+	
+--- 24/Oct/2014
+
+32. Added below new fields to the Table "OrderHeader" under OrdSpec for
+	ERP Interace process
+		1. Status	varchar(5)	Checked
+		2. ERPUpdateDate	date	Checked
+		3. ERPUpdateBy	varchar(25)	Checked	
+				
+33. Modified the below Stored Procedure under OrdSpec
+	1.SP_CreateOrderKit
+	2.SP_CreateOrderHeaderAndComponent	
+	
+34. Added new Stored Procedure [SP_GetKitDetailsForERP] under OrdSpec
+	To Get Order Kit Details from OrderKit for the ERP Interface	
+--- 30/Oct/2014
+
+35. Added new Stored Procedure [SP_GetProjectNamesFromOrder] under OrdSpec
+	Get project name from OrderInterface for the ERP Interface	
+	
+36. Added new Stored Procedure [SP_GetMatCategoryFromOrder] under OrdSpec
+	Get material category from OrderInterface for the ERP Interface	
+
+37. Added new table OrderInterface under OrdSpec to manage order interface status.
+	
+	1.WBSRefNo	bigint	Unchecked - PK
+	2.ProjectName	varchar(50)	Unchecked - PK
+	3.MaterialCategoryID	varchar(5)	Unchecked -PK
+	4.Status	varchar(5)	Checked
+	5.BatchNo	bigint	Checked
+	6.UpdateDate	date	Checked
+	7.UpdateBy	varchar(25)	Checked		
+
+38. Added new Stored Procedure [SP_UpdateERPInterfaceStatus] under OrdSpec
+	To Update the Status as 'I' in OrderInterface table for ERP Interfacing		
+--- 31/Oct/2014
+39. Modified the below tables to match the field length the inserting field lengths
+	
+		1.OrderHeader
+		2.OrderComponent
+		3.OrderInterface
+		4.OrderKit
+40.Modified the Stored Procedure [SP_GetWBSMasterReleaseDetails] under OrdSpec	
+	to sort the data based on date to display latest data on top of the grid
+	
+41. Modified the stored Procedure [SP_GetWBSMasterReleaseDetails] under OrdSpec to Sort the 
+	data based on the Release Date 
+		
+42. Modified the stored Procedure [SP_GetViewOutput] under OrdSpec to Sort the 
+	data based on the LastComputeDate AND LastModifiedDate,Added Code to get the
+	Vendor's released the project and the release status. 
+	
+43. Modified the stored Procedure [SP_Activate] under OrdSpec to update the 
+	LastModifiedDate while activation
+	
+--- 06/Nov/2014
+
+44. Modified the stored Procedure [SP_CreateWBS],[SP_CreateOrderHeaderAndComponent],[SP_CreateOrderKit]
+	under OrdSpec Added error code valuation to return result.
+		
+45. Added new Stored Procedure [SP_CreateOrderInterface] under OrdSpec
+	To Create OrderInterface details for the respective ProjectName and WBSRefNo
+	
+46. Added new Stored Procedure [SP_CreateERPEBOMInterface] under OrdSpec
+	To Insert Batch No and details into fsp_EBOMInterface for ERP Interfacing	
+--- 11/Nov/2014	
+47. Added new Stored Procedure [SP_GetEBOMInterfaceHeaderDetails] under OrdSpec
+	To Get Order Interface Status Details from EBOMInterfaceHeader for the ERP Interface Status	
+46. Added new Stored Procedure [SP_GetEBOMInterfaceBatchDetails] under OrdSpec
+	To Get the batch details from fsp_EBOMInterface for the respective batch interfaced	
+	
+------ Modifications After Nov 27 2014
+
+48.Modified SP : SP_InterfaceToCostTable under ORDCFGdemo
+	Commented the code to insert data into ComponentMaster,VendorComponentMaster
+	
+49.New SP : SP_ImportAccessVendorMasterToSQLDB under ORDCFGdemo
+	For Importing all the exisiting vendor codes in to vendormaster , 
+	aswell populate fresh data into ComponentMaster and VendorComponentMaster from Access DB.
+	
+50.Modified SP : SP_GetVendorComponentMasterDetails under ORDCFGdemo
+	Set Key validation condtion moved to where clause instead of ON
+
+51.New SP : SP_ImportAccessVendorMasterToSQLDB under ORDCFGdemo
+	Import the AccessVendorMaster,AccessComponentMaster,AccessVendorComponent tables from Access DB 
+	to VendorMaster,ComponentMaster,VendorComponentMaster tables respt. in SQL DB
+
+52.New SP : SP_GetKitDescription under ORDCFGdemo
+	To Get the Kit Description for the specified Kit Number from V_Dat_KitMaster
+
+53.Modified : SP_InterfaceToCostTable under FMLServer
+	Added collate SQL_Latin1_General_CP1_CI_AS
+	
+54.Modified : SP_InsertToVendorComponentMaster under FMLServer
+	Added collate SQL_Latin1_General_CP1_CI_AS
+	
+55.Modified:SP_UpdateVendorComponentMaster under ORDCFGdemo
+	Added Insert code if data not exist
+
+56.Modified: SP_ImportAccessComponentToSQLDB  under ORDCFGdemo
+	Changed VU_Price to Hdb_TermPrice
+
+57.Modified:KitMaster table under ORDDatDemo
+	Added 2 new fields VersionNo,VersionDate
+
+58.Modified:KitDetail table under ORDDatDemo
+	Added 2 new fields VersionNo,VersionDate
+
+59.Modified:V_Dat_KitMaster view under ORDCFGdemo
+	Added 2 new fields VersionNo,VersionDate
+
+
+60.Modified:V_Dat_KitDetail view under ORDCFGdemo
+	Added 2 new fields VersionNo,VersionDate
+
+61.Modified : SP_AddKitMaster under ORDCFGdemo
+
+62. Modified : SP_UpdateKitDetail under ORDCFGdemo
+
+63.New SP : SP_RptVCMKittingList under ORDCFGdemo
+	To get the VendorComponentMaster details for the specified Kit No and Vendor Code
+
+64.Modified :SP_RptSummaryDetails under OrdSpecDemo
+	Added FD.MaterialCategoryID in the select query
+	
+65.Modified: MenuTable table under CommonDatQas
+	Added new menu Where Used under GroupID =1 and NewORD
+
+66.Modified:TempMaster,TempMasterHistory,ProjectMaster under OrdSpecDemo
+	Added 4 new fields ApprovedBy varchar(50) Checked
+	CheckedBy varchar(50) Checked
+	IssuedBy varchar(50) Checked
+	VersionDate datetime Checked
+	
+67.Modified:TempMaster table under ORDDatDemo
+	Added 4 new fields ApprovedBy varchar(50) Checked
+	CheckedBy varchar(50) Checked
+	IssuedBy varchar(50) Checked
+	VersionDate datetime Checked
+	 
+68.Modified:V_TempMaster under OrdSpecDemo
+	Added 4 new fields ApprovedBy varchar(50) Checked
+	CheckedBy varchar(50) Checked
+	IssuedBy varchar(50) Checked
+	VersionDate datetime Checked
+	
+69.Modified:V_OrdSpec_TempMaster,V_OrdSpec_TempMasterHistory
+	ORDDatDemo
+	Added 4 new fields ApprovedBy varchar(50) Checked
+	CheckedBy varchar(50) Checked
+	IssuedBy varchar(50) Checked
+	VersionDate datetime Checked
+	
+70.Modified:V_V_TempMaster view under ORDCFGdemo
+	Added 4 new fields ApprovedBy varchar(50) Checked
+	CheckedBy varchar(50) Checked
+	IssuedBy varchar(50) Checked
+	VersionDate datetime Checked
+	
+71.Modified:SP_UpdateTempMaster4VOCompute  under OrdSpecDemo
+	Added 4 new fields ApprovedBy, 
+	CheckedBy,IssuedBy,VersionDate
+	 
+72.Modified:SP_UpdateStatuForCompute  under OrdSpecDemo
+	Added 4 new fields ApprovedBy, 
+	CheckedBy,IssuedBy,VersionDate
+	
+73.Modified:SP_MoveTempDataToSpec under ORDDatDemo
+	commented code to move data to repective history and no version increment
+	
+
+
+	
+	
+	
+
+	
+
+	
+
+
+	
+	
+	
+
+
+
+
+
+	
+
+
+ 
+
+
+
+	
+	
+
+
+
+	
+
+	
+
+
+
+								

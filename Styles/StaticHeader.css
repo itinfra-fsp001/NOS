@@ -1,0 +1,106 @@
+
+.table-container12 {
+  position: relative;
+  width: auto;
+  height: auto;
+  overflow: auto;
+  background-color: #FFF;
+  border: 1px solid #596380;
+  padding: 0 10px 0 0;
+}
+
+table.grViewOutput {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+table.grScreenTemplate {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+table.grModel {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+table.grTemplate02 {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+table.grTemplate03 {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;  
+}
+table.grTemplate04 {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+table.grTemplate05 {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+table.grTemplate06 {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+table.grTemplate07 {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+table.grEx {
+  border-collapse: separate;
+  border-spacing: 0;
+ /* text-align: center;*/
+  border-left: 1px solid #596380;
+  border-top: 1px solid #596380;
+}
+/*table.grViewOutput caption {
+  padding: 3px 10px;
+  font-size: larger;
+  font-weight: bold;
+  color: #FFF;
+  background: #BF8660;
+  border: 1px solid #596380;
+  border-top-width: 3px;
+  border-left-width: 5px;
+}
+table.grViewOutput thead {
+  background: #CFD4E6;
+}
+table.grViewOutput thead td,
+table.grViewOutput thead th {
+  color: #000;
+  font-weight: bold;
+}
+table.grViewOutput td,
+table.grViewOutput th {
+ padding: 6px 10px;
+  text-align: center;
+  border-right: 1px solid #596380;
+  border-bottom: 1px solid #596380;
+}*/

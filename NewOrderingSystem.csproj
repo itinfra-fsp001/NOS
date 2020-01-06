@@ -1,0 +1,714 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B62714D0-C258-4D88-9B77-330BA17E9285}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>NewOrderingSystem</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NewOrderingSystem</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <SccAuxPath>SAK</SccAuxPath>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FormulaEvaluator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\MyWork\FormulaEvaluator\FormulaEvaluator\bin\Release\FormulaEvaluator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic">
+      <Name>Microsoft.VisualBasic</Name>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Name>Microsoft.VisualBasic.Compatibility</Name>
+    </Reference>
+    <Reference Include="SQLHelper">
+      <Name>SQLHelper</Name>
+      <HintPath>..\WBSBOMGeneration\bin\SQLHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Configuration.Install">
+      <Name>System.Configuration.Install</Name>
+    </Reference>
+    <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.DirectoryServices">
+      <Name>System.DirectoryServices</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Messaging">
+      <Name>System.Messaging</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UpdatePanelProgress, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Utilities, Version=1.0.2902.26602, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Utilities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\ChangePassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\Copy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\ERPInterface.cs" />
+    <Compile Include="BLL\ExcelConvertor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\FormulaEval.cs" />
+    <Compile Include="BLL\General.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\IssuePO.cs" />
+    <Compile Include="BLL\Login.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\Logout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\MainScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\PCESInterface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\Signature.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLL\Release.cs" />
+    <Compile Include="BLL\ViewOutPut.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CNWInterface.aspx.cs">
+      <DependentUpon>CNWInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CNWInterface.aspx.designer.cs">
+      <DependentUpon>CNWInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComputationStatus.aspx.cs">
+      <DependentUpon>ComputationStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActivationHistoryMaintain.aspx.cs">
+      <DependentUpon>ActivationHistoryMaintain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActivationHistoryMaintain.aspx.designer.cs">
+      <DependentUpon>ActivationHistoryMaintain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ERPInterfaceStatus.aspx.cs">
+      <DependentUpon>ERPInterfaceStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ERPInterfaceStatus.aspx.designer.cs">
+      <DependentUpon>ERPInterfaceStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ERPInterface.aspx.cs">
+      <DependentUpon>ERPInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ERPInterface.aspx.designer.cs">
+      <DependentUpon>ERPInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptCWTWeight.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCWTWeight.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptsubSetDetails_RevHistory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptsubSetDetails_RevHistory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptsubWBSSetDetails_RevHistory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptsubWBSSetDetails_RevHistory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptComponentKitProject.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptComponentKitProject.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ZeroCost.aspx.cs">
+      <DependentUpon>ZeroCost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ZeroCost.aspx.designer.cs">
+      <DependentUpon>ZeroCost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Copy.aspx.cs">
+      <DependentUpon>Copy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Help.aspx.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help.aspx.designer.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssuePO.aspx.cs">
+      <DependentUpon>IssuePO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssuePO.aspx.designer.cs">
+      <DependentUpon>IssuePO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainNEWScreen.aspx.cs">
+      <DependentUpon>MainNEWScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainNEWScreen.aspx.designer.cs">
+      <DependentUpon>MainNEWScreen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Output.aspx.cs">
+      <DependentUpon>Output.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PCESInteface.aspx.cs">
+      <DependentUpon>PCESInteface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PCESInteface.aspx.designer.cs">
+      <DependentUpon>PCESInteface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Release.aspx.cs">
+      <DependentUpon>Release.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Release.aspx.designer.cs">
+      <DependentUpon>Release.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportExport.aspx.cs">
+      <DependentUpon>ReportExport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportExport.aspx.designer.cs">
+      <DependentUpon>ReportExport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\repExceptions1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repExceptions.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\repProductionSpec1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repProductionSpec.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptCostReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCostReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptKSetDetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptKSetDetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptKSetWBSDetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptKSetWBSDetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptsubSetDetails_TempSpec.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptsubSetDetails_TempSpec.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptSummaryDetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryDetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptSummaryDetails_Details.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryDetails_Details.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptWBSDetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWBSDetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptWBSDetails_Details.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWBSDetails_Details.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptZeroCostReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptZeroCostReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Signature.aspx.cs">
+      <DependentUpon>Signature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UnderMaintenance.aspx.cs">
+      <DependentUpon>UnderMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UnderMaintenance.aspx.designer.cs">
+      <DependentUpon>UnderMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewOutput.aspx.cs">
+      <DependentUpon>ViewOutput.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewOutput.aspx.designer.cs">
+      <DependentUpon>ViewOutput.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewReports.aspx.cs">
+      <DependentUpon>ViewReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Content Include="bin\AjaxControlToolkit.dll" />
+    <Content Include="bin\NewOrderingSystem.dll" />
+    <Content Include="bin\NewOrderingSystem.pdb" />
+    <Content Include="bin\SQLHelper.dll" />
+    <Content Include="bin\UpdatePanelProgress.dll" />
+    <Content Include="bin\Utilities.dll" />
+    <Content Include="ChangePassword.aspx" />
+    <Content Include="CNWInterface.aspx" />
+    <Content Include="ComputationStatus.aspx" />
+    <Content Include="ActivationHistoryMaintain.aspx" />
+    <Content Include="ERPInterfaceStatus.aspx" />
+    <Content Include="ERPInterface.aspx" />
+    <Content Include="Formulas.xml" />
+    <Content Include="Images\RefreshIcon.jpg" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="ZeroCost.aspx" />
+    <Content Include="Copy.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="CSS\MenuButtonStyle.css" />
+    <Content Include="CSS\Style.css" />
+    <Content Include="ErrorPage.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Global.asax">
+      <SubType>Component</SubType>
+    </Content>
+    <Content Include="Help.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="Images\background.jpg" />
+    <Content Include="Images\background2New.JPG" />
+    <Content Include="Images\BannerNOS.jpg" />
+    <Content Include="Images\Deleted\Banner.jpg" />
+    <Content Include="Images\Deleted\Banner1.jpg" />
+    <Content Include="Images\Deleted\Fujitec-logo.JPG" />
+    <Content Include="Images\Deleted\Fujitec-logo1.jpg" />
+    <Content Include="Images\Deleted\home-h_Old1.gif" />
+    <Content Include="Images\Deleted\home_Old1.gif" />
+    <Content Include="Images\Deleted\Logout-button-h_Old1.jpg" />
+    <Content Include="Images\Deleted\Logout-button_Old1.jpg" />
+    <Content Include="Images\Deleted\nav_main_bot.gif" />
+    <Content Include="Images\Deleted\New-button-h_Old1.jpg" />
+    <Content Include="Images\Deleted\New-button_Old.gif" />
+    <Content Include="Images\Deleted\TableBackground.gif" />
+    <Content Include="Images\Deleted\ViewOutput-button-h_Old1.jpg" />
+    <Content Include="Images\Deleted\ViewOutput-button_Old1.gif" />
+    <Content Include="Images\Header.png" />
+    <Content Include="Images\home-h.gif" />
+    <Content Include="Images\home.gif" />
+    <Content Include="Images\HomeBG.jpg" />
+    <Content Include="Images\HomeNEW-h.gif" />
+    <Content Include="Images\homeNew-h.jpg" />
+    <Content Include="Images\homeNew-h.png" />
+    <Content Include="Images\HomeNEW.gif" />
+    <Content Include="Images\homeNew.jpg" />
+    <Content Include="Images\HomeNEW.png" />
+    <Content Include="Images\IssuePO-h.gif" />
+    <Content Include="Images\IssuePO-h.png" />
+    <Content Include="Images\IssuePO.gif" />
+    <Content Include="Images\IssuePO.png" />
+    <Content Include="Images\Load-button-h.jpg" />
+    <Content Include="Images\Load-button.gif" />
+    <Content Include="Images\LoginBG.jpg" />
+    <Content Include="Images\logo.gif" />
+    <Content Include="Images\Logout-button-h.jpg" />
+    <Content Include="Images\Logout-button.jpg" />
+    <Content Include="Images\LogoutNew-h.gif" />
+    <Content Include="Images\logoutNew-h.jpg" />
+    <Content Include="Images\LogoutNew-h.png" />
+    <Content Include="Images\LogoutNew.gif" />
+    <Content Include="Images\logoutNew.jpg" />
+    <Content Include="Images\LogoutNew.png" />
+    <Content Include="Images\Maintenance.jpg" />
+    <Content Include="Images\New-button-h.jpg" />
+    <Content Include="Images\New-button.gif" />
+    <Content Include="Images\NewNEW-h.gif" />
+    <Content Include="Images\newNew-h.jpg" />
+    <Content Include="Images\NewNew-h.png" />
+    <Content Include="Images\NewNEW.gif" />
+    <Content Include="Images\newNew.jpg" />
+    <Content Include="Images\newNew.png" />
+    <Content Include="Images\outputNew-h.gif" />
+    <Content Include="Images\outputnew-h.jpg" />
+    <Content Include="Images\outputNew-h.png" />
+    <Content Include="Images\outputNew.gif" />
+    <Content Include="Images\outputNew.jpg" />
+    <Content Include="Images\outputNew.png" />
+    <Content Include="Images\processing.gif" />
+    <Content Include="Images\ProjectDefinition-button-h.jpg" />
+    <Content Include="Images\ProjectDefinition-button.jpg" />
+    <Content Include="Images\top-banner-1New.JPG" />
+    <Content Include="Images\top-banner.jpg" />
+    <Content Include="Images\top-banner2.jpg" />
+    <Content Include="Images\top-bannerNOS.jpg" />
+    <Content Include="Images\TopBanner.gif" />
+    <Content Include="Images\ViewOutput-button-h.jpg" />
+    <Content Include="Images\ViewOutput-button.gif" />
+    <Content Include="Images\WBSElement-button-h.jpg" />
+    <Content Include="Images\WBSElement-button.jpg" />
+    <Content Include="IssuePO.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
+    <Content Include="MainNEWScreen.aspx" />
+    <Content Include="NewChanges.txt" />
+    <Content Include="obj\Debug\NewOrderingSystem.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\NewOrderingSystem.dll" />
+    <Content Include="obj\Debug\NewOrderingSystem.pdb" />
+    <Content Include="obj\Debug\TempPE\Reports.repExceptions1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Reports.repProductionSpec1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Reports.rptSummaryDetails.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Reports.rptSummaryDetails_Details.cs.dll" />
+    <Content Include="Output.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="PCESInteface.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Release.aspx" />
+    <Content Include="ReportExport.aspx" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\ScrollableGridPlugin.js" />
+    <Content Include="Signature.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Styles\StaticHeader.css" />
+    <Content Include="Styles\x.js" />
+    <Content Include="Styles\xtableheaderfixed.js" />
+    <Content Include="UnderMaintenance.aspx" />
+    <Content Include="ViewOutput.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="ViewReports.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="App_LocalResources\MainNEWScreen.aspx.resx" />
+    <EmbeddedResource Include="ChangePassword.aspx.resx">
+      <DependentUpon>ChangePassword.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComputationStatus.aspx.resx">
+      <DependentUpon>ComputationStatus.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Copy.aspx.resx">
+      <DependentUpon>Copy.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Global.asax.resx">
+      <DependentUpon>Global.asax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.aspx.resx">
+      <DependentUpon>Home.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.aspx.resx">
+      <DependentUpon>Login.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logout.aspx.resx">
+      <DependentUpon>Logout.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainScreen.aspx.resx" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.ChangePasswrod.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.ComputationStatus.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.Copy.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.Global.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.Home.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.Login.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.Logout.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.Output.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.PCESInteface.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.Signature.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.ViewOutput.resources" />
+    <EmbeddedResource Include="obj\Debug\NewOrderingSystem.ViewReports.resources" />
+    <EmbeddedResource Include="Output.aspx.resx">
+      <DependentUpon>Output.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCESInteface.aspx.resx">
+      <DependentUpon>PCESInteface.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\repExceptions.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>repExceptions1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\repProductionSpec.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>repProductionSpec1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptCostReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCostReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptCWTWeight.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCWTWeight.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptKSetDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptKSetDetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptKSetWBSDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptKSetWBSDetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptsubSetDetails_RevHistory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptsubSetDetails_RevHistory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptsubSetDetails_TempSpec.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptsubSetDetails_TempSpec.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptsubWBSSetDetails_RevHistory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptsubWBSSetDetails_RevHistory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSummaryDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryDetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSummaryDetails_Details.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryDetails_Details.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptWBSDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWBSDetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptWBSDetails_Details.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWBSDetails_Details.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptZeroCostReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptZeroCostReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptComponentKitProject.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptComponentKitProject.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Signature.aspx.resx">
+      <DependentUpon>Signature.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewOutput.aspx.resx">
+      <DependentUpon>ViewOutput.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewReports.aspx.resx">
+      <DependentUpon>ViewReports.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{CF845C55-C321-4742-B673-E6212D061ED9}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\top-bannerNOS.pdn" />
+    <None Include="NOS_FrontEnd_VersionHistory.pdf" />
+    <None Include="obj\Debug\NewOrderingSystem.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\ResolveAssemblyReference.cache" />
+    <None Include="SQL_DOCUMENT.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62416</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
